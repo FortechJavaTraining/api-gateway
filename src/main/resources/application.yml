@@ -1,0 +1,22 @@
+server:
+  port: 9090
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: sign-up
+          uri: 'http://localhost:8080'
+          predicates:
+            - Path=/sign-up
+        - id: login
+          uri: 'http://localhost:8080'
+          predicates:
+            - Path=/login
+        - id: employees
+          uri: 'http://localhost:8080'
+          predicates:
+            - Path=/employee,/employees,/employee/**
+        - id: departments
+          uri: 'http://localhost:8080'
+          predicates:
+            - Path=/department,/departments,/department/**
